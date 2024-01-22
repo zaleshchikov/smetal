@@ -27,6 +27,7 @@ class MaterialDropDown extends StatelessWidget {
     return Container(
         width: MediaQuery.of(context).size.width / 2.7,
         child: ReactiveDropdownField<String>(
+          
             validationMessages: {'required': (error) => 'Материал'},
             isExpanded: true,
             onChanged: f,

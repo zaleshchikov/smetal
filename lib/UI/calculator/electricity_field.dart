@@ -32,16 +32,16 @@ class _ElectricityFieldState extends State<ElectricityField> {
       form: () => ElectricityLogic.form,
       builder: (context, form, child) {
         form.control('cableOutput').value = widget.client.cableOutput;
-        if (widget.client.distributionBox != 0)
+        if (widget.client.distributionBox != -1)
           form.control('distributionBox').value = widget.client.distributionBox;
-        if (widget.client.connectingPoints != 0)
+        if (widget.client.connectingPoints != -1)
           form.control('connectingPoints').value = widget.client.connectingPoints;
         form.control('cableLaying').value = widget.client.cableLaying;
-        if (widget.client.warmFloorConecting != 0)
+        if (widget.client.warmFloorConecting != -1)
           form.control('warmFloorConecting').value = widget.client.warmFloorConecting;
-        if (widget.client.warmFloor != 0)
+        if (widget.client.warmFloor != -1)
           form.control('warmFloor').value = widget.client.warmFloor;
-        if (widget.client.warmFloorController != 0)
+        if (widget.client.warmFloorController != -1)
           form.control('warmFloorController').value =
               widget.client.warmFloorController;
         if (widget.client.warmFloorControllerMaterial != '')

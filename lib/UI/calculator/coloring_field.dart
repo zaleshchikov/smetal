@@ -43,12 +43,12 @@ class _ColoringFieldState extends State<ColoringField> {
     return ReactiveFormBuilder(
       form: () => ColoringLogic.form,
       builder: (context, form, child) {
-        if (widget.client.cleaning != 0)
+        if (widget.client.cleaning != -1)
           form.control('cleaning').value = widget.client.cleaning;
-        if (widget.client.priming != 0) form.control('priming').value = widget.client.priming;
-        if (widget.client.coloring != 0)
+        if (widget.client.priming != -1) form.control('priming').value = widget.client.priming;
+        if (widget.client.coloring != -1)
           form.control('coloring').value = widget.client.coloring;
-        if (widget.client.color != 0) form.control('color').value = widget.client.color;
+        if (widget.client.color != -1) form.control('color').value = widget.client.color;
 
         return Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -143,7 +143,7 @@ class _ColoringFieldState extends State<ColoringField> {
               ],
             ),*/
             FieldTileWithMaterial(4.2, sSize, 'color',
-                "Покраска", theme, form,                 MaterialDropDown([
+                "Краска", theme, form,                 MaterialDropDown([
                   'Tikkurila 0,9л -7м2',
                   'Tikkurila 2,7л -23м2',
                   'Tikkurila 9л - 81м2',
@@ -159,7 +159,7 @@ class _ColoringFieldState extends State<ColoringField> {
                         ? 'Материал'
                         : widget.client.colorMaterial)
                 , widget.client.colorMaterial, (_) {
-                  widget.client.coloring = form.control('coloring').value;
+                  widget.client.color = form.control('color').value;
                 }),
             /*Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,

@@ -34,45 +34,47 @@ class _SecondDataFieldState extends State<SecondDataField> {
     return ReactiveFormBuilder(
       form: () => SecondDataLogic.form,
       builder: (context, form, child) {
-        if (widget.client.ceiling != 0)
+        if (widget.client.ceiling != -1)
           form.control('ceiling').value = widget.client.ceiling;
-        if (widget.client.floor != 0)
+        if (widget.client.ceiling != -1)
+          form.control('ceiling').value = widget.client.ceiling;
+        if (widget.client.floor != -1)
           form.control('floor').value = widget.client.floor;
-        if (widget.client.floorRaising != 0)
+        if (widget.client.floorRaising != -1)
           form.control('floorRaising').value = widget.client.floorRaising;
-        if (widget.client.floorOverlap != 0)
+        if (widget.client.floorOverlap != -1)
           form.control('floorOverlap').value = widget.client.floorOverlap;
-        if (widget.client.front != 0)
+        if (widget.client.front != -1)
           form.control('front').value = widget.client.front;
-        if (widget.client.slopes != 0)
+        if (widget.client.slopes != -1)
           form.control('slopes').value = widget.client.slopes;
-        if (widget.client.F_profile != 0)
-          form.control('F_profile').value = widget.client.F_profile;
-        if (widget.client.startProfile != 0)
+        if (widget.client.f_profile != -1)
+          form.control('f_profile').value = widget.client.f_profile;
+        if (widget.client.startProfile != -1)
           form.control('startProfile').value = widget.client.startProfile;
-        if (widget.client.leftWall != 0)
+        if (widget.client.leftWall != -1)
           form.control('leftWall').value = widget.client.leftWall;
-        if (widget.client.rightWall != 0)
+        if (widget.client.rightWall != -1)
           form.control('rightWall').value = widget.client.rightWall;
-        if (widget.client.column != 0)
+        if (widget.client.column != -1)
           form.control('column').value = widget.client.column;
-        if (widget.client.railings != 0)
+        if (widget.client.railings != -1)
           form.control('railings').value = widget.client.railings;
-        if (widget.client.skirtingRailings != 0)
+        if (widget.client.skirtingRailings != -1)
           form.control('skirtingRailings').value =
               widget.client.skirtingRailings;
-        if (widget.client.baseboard != 0)
+        if (widget.client.baseboard != -1)
           form.control('baseboard').value = widget.client.baseboard;
-        if (widget.client.angles != 0)
+        if (widget.client.angles != -1)
           form.control('angles').value = widget.client.angles;
-        if (widget.client.windowsill != 0)
+        if (widget.client.windowsill != -1)
           form.control('windowsill').value = widget.client.windowsill;
-        if (widget.client.windowsillWithGlass != 0)
+        if (widget.client.windowsillWithGlass != -1)
           form.control('windowsillWithGlass').value =
               widget.client.windowsillWithGlass;
-        if (widget.client.sillSheathing != 0)
+        if (widget.client.sillSheathing != -1)
           form.control('sillSheathing').value = widget.client.sillSheathing;
-        if (widget.client.table != 0)
+        if (widget.client.table != -1)
           form.control('table').value = widget.client.table;
           form.control('clothesDryerCeiling').value = widget.client.clothesDryerCeiling;
           form.control('clothesDryerWall').value = widget.client.clothesDryerWall;
@@ -123,7 +125,7 @@ class _SecondDataFieldState extends State<SecondDataField> {
                 widget.client.ceilingMaterial, (_) {
               widget.client.ceiling = form.control('ceiling').value;
             }, (_) {
-              ParametrAlert.ShowParamAlert(context, theme.primaryColor, form,
+              ParametrAlert.ShowParamAlert(widget.client, context, theme.primaryColor, form,
                   theme.textTheme.titleLarge, CeilingLogic.form, 'ceiling');
             }),
             FieldTileWithMaterial.withOnTap(
@@ -154,7 +156,7 @@ class _SecondDataFieldState extends State<SecondDataField> {
                 widget.client.floor = form.control('floor').value;
               },
               (_) {
-                ParametrAlert.ShowParamAlert(context, theme.primaryColor, form,
+                ParametrAlert.ShowParamAlert(widget.client, context, theme.primaryColor, form,
                     theme.textTheme.titleLarge, CeilingLogic.form, "floor");
               },
             ),
@@ -219,7 +221,7 @@ class _SecondDataFieldState extends State<SecondDataField> {
             FieldTileWithMaterial(
                 4.2,
                 sSize,
-                'floor',
+                'floorOverlap',
                 "Покрытие пола",
                 theme,
                 form,
@@ -240,7 +242,7 @@ class _SecondDataFieldState extends State<SecondDataField> {
                         ? 'Материал'
                         : widget.client.floorOverlapMaterial),
                 widget.client.floorOverlapMaterial, (_) {
-              widget.client.floor = form.control('floor').value;
+              widget.client.floorOverlap = form.control('floorOverlap').value;
             }),
             /*Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -307,7 +309,7 @@ class _SecondDataFieldState extends State<SecondDataField> {
                 (_) {
               widget.client.front = form.control('front').value;
             }, (_) {
-              FrontAlert.ShowFrontAlert(context, theme.primaryColor, form,
+              FrontAlert.ShowFrontAlert(widget.client, context, theme.primaryColor, form,
                   theme.textTheme.titleLarge, RailingsLogic.form, 'front');
             }),
             /*ReactiveTextField(
@@ -395,22 +397,22 @@ class _SecondDataFieldState extends State<SecondDataField> {
             FieldTileWithMaterial(
                 4.2,
                 sSize,
-                'F_profile',
-                "F-профиль",
+                'f_profile',
+                "f-профиль",
                 theme,
                 form,
                 MaterialDropDown(
                     ['Запил под 45', 'Уголок', 'F-профиль', 'F-пр Кристаллит'],
                     (_) {
-                  widget.client.F_profileMaterial =
-                      form.control('F_profileMaterial').value;
+                  widget.client.f_profileMaterial =
+                      form.control('f_profileMaterial').value;
                 },
-                    'F_profileMaterial',
-                    widget.client.F_profileMaterial == ""
+                    'f_profileMaterial',
+                    widget.client.f_profileMaterial == ""
                         ? 'Материал'
-                        : widget.client.F_profileMaterial),
-                widget.client.F_profileMaterial, (_) {
-              widget.client.F_profile = form.control('F_profile').value;
+                        : widget.client.f_profileMaterial),
+                widget.client.f_profileMaterial, (_) {
+              widget.client.f_profile = form.control('f_profile').value;
             }),
 
             /*Row(
@@ -420,12 +422,12 @@ class _SecondDataFieldState extends State<SecondDataField> {
                     width: size.width / 2.7,
                     child: ReactiveTextField(
                       onChanged: (_) {
-                        client.F_profile = form.control('F_profile').value;
+                        client.f_profile = form.control('f_profile').value;
                       },
                       cursorColor: theme.primaryColor,
                       decoration: CustomInputDecoration(hintText: "F-профиль")
                           .inputDecoration(),
-                      formControlName: 'F_profile',
+                      formControlName: 'f_profile',
                       validationMessages: {
                         'required': (error) => 'Обязательное поле'
                       },
@@ -433,13 +435,13 @@ class _SecondDataFieldState extends State<SecondDataField> {
                 MaterialDropDown(
                     ['Запил под 45', 'Уголок', 'F-профиль', 'F-пр Кристаллит'],
                     (_) {
-                  client.F_profileMaterial =
-                      form.control('F_profileMaterial').value;
+                  client.f_profileMaterial =
+                      form.control('f_profileMaterial').value;
                 },
-                    'F_profileMaterial',
-                    client.F_profileMaterial == ""
+                    'f_profileMaterial',
+                    client.f_profileMaterial == ""
                         ? 'Материал'
-                        : client.F_profileMaterial)
+                        : client.f_profileMaterial)
               ],
             ),*/
             FieldTileWithMaterial(1.8, sSize, 'startProfile',
@@ -491,7 +493,7 @@ class _SecondDataFieldState extends State<SecondDataField> {
                 widget.client.leftWallMaterial, (_) {
               widget.client.leftWall = form.control('leftWall').value;
             }, (_) {
-              ParametrAlert.ShowParamAlert(context, theme.primaryColor, form,
+              ParametrAlert.ShowParamAlert(widget.client, context, theme.primaryColor, form,
                   theme.textTheme.titleLarge, CeilingLogic.form, 'leftWall');
             }),
             /*Row(
@@ -573,7 +575,7 @@ class _SecondDataFieldState extends State<SecondDataField> {
                 widget.client.rightWallMaterial, (_) {
               widget.client.rightWall = form.control('rightWall').value;
             }, (_) {
-              ParametrAlert.ShowParamAlert(context, theme.primaryColor, form,
+              ParametrAlert.ShowParamAlert(widget.client, context, theme.primaryColor, form,
                   theme.textTheme.titleLarge, CeilingLogic.form, 'rightWall');
             }),
             /*Row(
@@ -735,7 +737,7 @@ class _SecondDataFieldState extends State<SecondDataField> {
                 widget.client.railingsMaterial, (_) {
               widget.client.railings = form.control('railings').value;
             }, (_) {
-              ParametrAlert.ShowParamAlert(context, theme.primaryColor, form,
+              ParametrAlert.ShowParamAlert(widget.client, context, theme.primaryColor, form,
                   theme.textTheme.titleLarge, CeilingLogic.form, 'railings');
             }),
             /*Row(

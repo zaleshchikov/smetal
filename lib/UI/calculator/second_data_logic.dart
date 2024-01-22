@@ -5,6 +5,18 @@ class SecondDataLogic {
         'ceiling': FormControl<double>(
           validators: [Validators.required],
         ),
+        'ceilingHeight': FormControl<double>(
+          validators: [Validators.required],
+        ),
+        'ceilingWight': FormControl<double>(
+          validators: [Validators.required],
+        ),
+        'floorHeight': FormControl<double>(
+          validators: [Validators.required],
+        ),
+        'floorWight': FormControl<double>(
+          validators: [Validators.required],
+        ),
         'floor': FormControl<double>(
           validators: [Validators.required],
         ),
@@ -17,10 +29,19 @@ class SecondDataLogic {
         'front': FormControl<double>(
           validators: [Validators.required],
         ),
+        'frontHeight': FormControl<double>(
+          validators: [Validators.required],
+        ),
+        'frontWight': FormControl<double>(
+          validators: [Validators.required],
+        ),
+        'frontKvadratura': FormControl<double>(
+          validators: [Validators.required],
+        ),
         'slopes': FormControl<double>(
           validators: [Validators.required],
         ),
-        'F_profile': FormControl<double>(
+        'f_profile': FormControl<double>(
           validators: [Validators.required],
         ),
         'startProfile': FormControl<double>(
@@ -38,6 +59,12 @@ class SecondDataLogic {
         'railings': FormControl<double>(
           validators: [Validators.required],
         ),
+    'railingsHeight': FormControl<double>(
+      validators: [Validators.required],
+    ),
+    'railingsWight': FormControl<double>(
+      validators: [Validators.required],
+    ),
         'skirtingRailings': FormControl<double>(
           validators: [Validators.required],
         ),
@@ -80,7 +107,7 @@ class SecondDataLogic {
         'slopesMaterial': FormControl<String>(
           validators: [Validators.required],
         ),
-        'F_profileMaterial': FormControl<String>(
+        'f_profileMaterial': FormControl<String>(
           validators: [Validators.required],
         ),
         'startProfileMaterial': FormControl<String>(

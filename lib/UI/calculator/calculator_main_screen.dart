@@ -1,4 +1,6 @@
+
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smeta/UI/calculator/first_data_logic.dart';
 import 'package:smeta/UI/drawer/drawer.dart';
 import '../../models/client.dart';
@@ -11,6 +13,9 @@ import 'extra_screen.dart';
 import 'package:smeta/models/calculate.dart';
 import 'package:smeta/pdf/pdf_screen.dart';
 import 'package:smeta/decoration/border_decoration.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+
 
 class CalculatorMainScreen extends StatefulWidget {
   String title;
@@ -84,7 +89,7 @@ class _CalculatorMainScreenState extends State<CalculatorMainScreen> {
               selectedIndex == 5
                   ? Column(
                       children: [
-                        Text("$result",
+                        Text(result.toStringAsFixed(2),
                             style: TextStyle(
                                 fontSize: theme.textTheme.titleLarge!.fontSize,
                                 fontFamily:
@@ -93,22 +98,87 @@ class _CalculatorMainScreenState extends State<CalculatorMainScreen> {
                         Container(
                           height: MediaQuery.of(context).size.height / 20,
                         ),
-                        Container(
-                          decoration: borderDecoration.border(),
-                          child: TextButton(
-                              onPressed: () =>
-                                  Navigator.of(context).pushReplacement(
-                                    MaterialPageRoute(
-                                      builder: (context) => PdfScreen(widget.client),
-                                    ),
-                                  ),
-                              child: Text('Открыть pdf',
-                                  style: TextStyle(
-                                      fontFamily: theme
-                                          .textTheme.titleLarge!.fontFamily,
-                                      fontSize:
+                        Column(
+                          children: [
+                            Container(
+                              decoration: borderDecoration.border(),
+                              child: TextButton(
+                                  onPressed: () async
+                                  {
+
+                                    final prefs = await SharedPreferences.getInstance();
+                                    var managerId = prefs.getInt('managerId');
+                                    final response = await http.get(
+                                        headers: {
+                                          'Accept': 'application/json',
+                                          "Content-Type": "application/json"
+                                        },
+                                        Uri.parse(
+                                            'http://smeta.pythonanywhere.com/'));
+
+                                    var jsDecode = json.decode(response.body);
+                                    jsDecode = jsDecode.where((e) => e['id'] == widget.client.id);
+                                    //
+                                    if(jsDecode.toList().length == 0) {
+                                      final prefs = await SharedPreferences
+                                          .getInstance();
+                                      var js = widget.client.toJson();
+                                      js.addAll({
+                                        'managerId': prefs.getInt('managerId')
+                                      });
+                                      var response = await http.post(
+                                          headers: {
+                                            'Accept': 'application/json',
+                                            "Content-Type": "application/json"
+                                          },
+                                          Uri.parse(
+                                              'http://smeta.pythonanywhere.com/clients/add'),
+                                          body: json.encode(js));
+                                      return;
+                                    } else{
+                                      final prefs = await SharedPreferences
+                                          .getInstance();
+                                      var js = widget.client.toJson();
+                                      js.addAll({
+                                        'managerId': prefs.getInt('managerId')
+                                      });
+                                      var response = await http.put(
+                                          headers: {
+                                            'Accept': 'application/json',
+                                            "Content-Type": "application/json"
+                                          },
+                                          Uri.parse(
+                                              'http://smeta.pythonanywhere.com/clients/${widget.client.id}'),
+                                          body: json.encode(js));
+                                    }
+                                    },
+                                  child: Text('Сохранить в базу',
+                                      style: TextStyle(
+                                          fontFamily: theme
+                                              .textTheme.titleLarge!.fontFamily,
+                                          fontSize:
                                           theme.textTheme.titleLarge!.fontSize,
-                                      color: Colors.black))),
+                                          color: Colors.black))),
+                            ),
+                            Container(height: MediaQuery.of(context).size.height/100,),
+                            Container(
+                              decoration: borderDecoration.border(),
+                              child: TextButton(
+                                  onPressed: () =>
+                                      Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                          builder: (context) => PdfScreen(widget.client),
+                                        ),
+                                      ),
+                                  child: Text('Открыть pdf',
+                                      style: TextStyle(
+                                          fontFamily: theme
+                                              .textTheme.titleLarge!.fontFamily,
+                                          fontSize:
+                                              theme.textTheme.titleLarge!.fontSize,
+                                          color: Colors.black))),
+                            ),
+                          ],
                         )
                       ],
                     )

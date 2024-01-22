@@ -3,19 +3,16 @@ import 'materials.dart';
 
 class Calculation {
   static double Calculate(Client client) {
-
     return (client.ceiling * MaterialPrice.GetPrice(client.ceilingMaterial) +
         client.floor * MaterialPrice.GetPrice(client.floorMaterial) +
-        client.floorRaising +
-        100 * 1000 +
+        client.floorRaising * 100 +
         client.floorOverlap *
             MaterialPrice.GetPrice(client.floorOverlapMaterial) +
         client.front * MaterialPrice.GetPrice(client.frontMaterial) +
         client.slopes * MaterialPrice.GetPrice(client.slopesMaterial) +
-        client.F_profile * MaterialPrice.GetPrice(client.F_profileMaterial) +
+        client.f_profile * MaterialPrice.GetPrice(client.f_profileMaterial) +
         client.startProfile *
             MaterialPrice.GetPrice(client.startProfileMaterial) +
-        client.ceiling * MaterialPrice.GetPrice(client.ceilingMaterial) +
         client.leftWall * MaterialPrice.GetPrice(client.leftWallMaterial) +
         client.rightWall * MaterialPrice.GetPrice(client.rightWallMaterial) +
         client.column * MaterialPrice.GetPrice(client.columnMaterial) +
@@ -23,8 +20,8 @@ class Calculation {
         client.skirtingRailings * 250 +
         client.baseboard * MaterialPrice.GetPrice(client.baseboardMaterial) +
         client.angles * 320 +
-        client.windowsill * MaterialPrice.GetPrice(client.windowsillMaterial) +
-        client.windowsillWithGlass *
+        client.windowsill/1000 * MaterialPrice.GetPrice(client.windowsillMaterial) +
+        client.windowsillWithGlass/1000 *
             MaterialPrice.GetPrice(client.windowsillWithGlassMaterial) +
         client.sillSheathing *
             MaterialPrice.GetPrice(client.sillSheathingMaterial) +
@@ -53,6 +50,8 @@ class Calculation {
         client.dop3 +
         client.dop4 +
         client.dop5 +
-        client.dop6);
+        client.dop6 +
+        (client.clothesDryerCeiling ? 6450 : 0) +
+        (client.clothesDryerWall ? 6450 : 0));
   }
 }

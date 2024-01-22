@@ -19,12 +19,12 @@ class ExtraField extends StatelessWidget {
     return ReactiveFormBuilder(
       form: () => ExtraLogic.form,
       builder: (context, form, child) {
-        if (client.dop1 != 0) form.control('dop1').value = client.dop1;
-        if (client.dop2 != 0) form.control('dop2').value = client.dop2;
-        if (client.dop3 != 0) form.control('dop3').value = client.dop3;
-        if (client.dop4 != 0) form.control('dop4').value = client.dop4;
-        if (client.dop5 != 0) form.control('dop5').value = client.dop5;
-        if (client.dop6 != 0) form.control('dop6').value = client.dop6;
+        if (client.dop1 != -1) form.control('dop1').value = client.dop1;
+        if (client.dop2 != -1) form.control('dop2').value = client.dop2;
+        if (client.dop3 != -1) form.control('dop3').value = client.dop3;
+        if (client.dop4 != -1) form.control('dop4').value = client.dop4;
+        if (client.dop5 != -1) form.control('dop5').value = client.dop5;
+        if (client.dop6 != -1) form.control('dop6').value = client.dop6;
         if (client.name1 != "") form.control('name1').value = client.name1;
         if (client.name2 != "") form.control('name2').value = client.name2;
         if (client.name3 != "") form.control('name3').value = client.name3;
@@ -47,7 +47,7 @@ class ExtraField extends StatelessWidget {
             ),
             ReactiveTextField(
               onChanged: (_) {
-                client.dop1 = form.control('dop1').value;
+                client.dop1 = form.control('dop1').value == null ? 0:  form.control('dop1').value;
               },
               cursorColor: theme.primaryColor,
               decoration: CustomInputDecoration(hintText: "Цена работы")
@@ -67,7 +67,7 @@ class ExtraField extends StatelessWidget {
             ),
             ReactiveTextField(
               onChanged: (_) {
-                client.dop2 = form.control('dop2').value;
+                client.dop2 = form.control('dop2').value == null ? 0:  form.control('dop2').value;
               },
               cursorColor: theme.primaryColor,
               decoration: CustomInputDecoration(hintText: "Цена работы")
@@ -87,7 +87,7 @@ class ExtraField extends StatelessWidget {
             ),
             ReactiveTextField(
               onChanged: (_) {
-                client.dop3 = form.control('dop3').value;
+                client.dop3 = form.control('dop3').value == null ? 0:  form.control('dop3').value;
               },
               cursorColor: theme.primaryColor,
               decoration: CustomInputDecoration(hintText: "Цена работы")
@@ -107,7 +107,7 @@ class ExtraField extends StatelessWidget {
             ),
             ReactiveTextField(
               onChanged: (_) {
-                client.dop4 = form.control('dop4').value;
+                client.dop4 = form.control('dop4').value == null ? 0:  form.control('dop4').value;
               },
               cursorColor: theme.primaryColor,
               decoration: CustomInputDecoration(hintText: "Цена работы")
@@ -127,7 +127,7 @@ class ExtraField extends StatelessWidget {
             ),
             ReactiveTextField(
               onChanged: (_) {
-                client.dop5 = form.control('dop5').value;
+                client.dop5 = form.control('dop5').value != null ?  form.control('dop5').value : 0;
               },
               cursorColor: theme.primaryColor,
               decoration: CustomInputDecoration(hintText: "Цена работы")
@@ -147,7 +147,7 @@ class ExtraField extends StatelessWidget {
             ),
             ReactiveTextField(
               onChanged: (_) {
-                client.dop6 = form.control('dop6').value;
+                form.control('dop6').value != null ? client.dop6 = form.control('dop6').value : client.dop6 = 0;
               },
               cursorColor: theme.primaryColor,
               decoration: CustomInputDecoration(hintText: "Цена работы")

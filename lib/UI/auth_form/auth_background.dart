@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smeta/decoration/border_decoration.dart';
 import 'auth_ui.dart';
 
 class AuthBackground extends StatelessWidget {
-  AuthBackground({super.key});
+  SharedPreferences prefs;
+
+  AuthBackground(this.prefs);
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +20,7 @@ class AuthBackground extends StatelessWidget {
         decoration: decoration.border(),
         height: size.height/1.8,
         width: size.width/1.4,
-        child: AuthForm(),
+        child: AuthForm(prefs),
       ),
     );
   }

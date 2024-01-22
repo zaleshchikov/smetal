@@ -16,6 +16,8 @@ class CustomInputDecoration {
 
 
   InputDecoration inputDecoration() => InputDecoration(
+    helperMaxLines: 2,
+
     hintText: hintText,
     helperText: hintText,
       helperStyle: TextStyle(

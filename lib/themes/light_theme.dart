@@ -12,9 +12,9 @@ AppTheme CustomAppThemeLight() {
       ),
 
         textTheme: TextTheme(
-          bodyLarge: GoogleFonts.montserrat(color: Colors.white),
+          bodyLarge: GoogleFonts.montserrat(color: Colors.black),
           bodyMedium: GoogleFonts.montserrat(color: Colors.black),
-          bodySmall: GoogleFonts.montserrat(color: Colors.white),
+          bodySmall: GoogleFonts.montserrat(color: Colors.black),
           titleLarge: GoogleFonts.montserrat(color: Colors.white),
           titleMedium: GoogleFonts.montserrat(color: Colors.black),
           titleSmall: GoogleFonts.montserrat(color: Colors.white),

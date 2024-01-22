@@ -12,7 +12,7 @@ class FirstDataLogic{
     'number': FormControl<String>(
       validators: [Validators.required],
     ),
-    'floor': FormControl<int>(
+    'level': FormControl<int>(
       validators: [Validators.required],
     ),
     'elevator': FormControl<String>(

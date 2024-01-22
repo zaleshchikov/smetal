@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smeta/UI/auth_form/auth_background.dart';
 import 'auth_ui.dart';
 import 'package:smeta/admin/main_admin_screen.dart';
 
 class AuthScreen extends StatelessWidget {
-  const AuthScreen({super.key});
-
+  SharedPreferences prefs;
+  AuthScreen(this.prefs);
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
@@ -17,18 +18,7 @@ class AuthScreen extends StatelessWidget {
           Container(
             height: size.height/8,
           ),
-            AuthBackground(),
-          TextButton(
-            child: Text("Я администратор",
-              style: theme.textTheme.bodyMedium,
-            ),
-            onPressed: (){
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => MainAdminScreen()));
-            },
-          ),
+            AuthBackground(prefs),
           Container(
             height: size.height/8,
           ),

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 import 'package:smeta/decoration/input_decoration.dart';
+import 'package:smeta/models/client.dart';
 
 class FrontAlert {
 
-  static ShowFrontAlert(BuildContext context, Color primaryColor,
+  static ShowFrontAlert(Client client, BuildContext context, Color primaryColor,
       FormGroup screenForm, TextStyle? style, FormGroup alertForm, String element) =>
       showDialog(
           context: context,
@@ -16,10 +17,21 @@ class FrontAlert {
                   child: ReactiveFormBuilder(
                       form: () => alertForm,
                       builder: (context, alert_form, child) {
+                        alert_form.control('heigth').value = client.frontHeight;
+                        alert_form.control('width').value = client.frontWight;
+                        alert_form.control('kvadratura').value = client.frontKvadratura;
+
                         return Column(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               ReactiveTextField(
+                                onChanged: (_){
+                                  client.frontHeight = alert_form.control('heigth').value;
+                                  client.frontWight = alert_form.control('width').value;
+                                  client.frontKvadratura = alert_form.control('kvadratura').value;
+                                  screenForm.control('${element}Height').value =
+                                      alert_form.control('heigth').value;
+                                },
                                 keyboardType: TextInputType.number,
                                 cursorColor: primaryColor,
                                 decoration: CustomInputDecoration(
@@ -31,6 +43,13 @@ class FrontAlert {
                                 },
                               ),
                               ReactiveTextField(
+                                onChanged: (_){
+                                  client.frontHeight = alert_form.control('heigth').value;
+                                  client.frontWight = alert_form.control('width').value;
+                                  client.frontKvadratura = alert_form.control('kvadratura').value;
+                                  screenForm.control('${element}Width').value =
+                                      alert_form.control('width').value;
+                                },
                                 keyboardType: TextInputType.number,
                                 cursorColor: primaryColor,
                                 decoration: CustomInputDecoration(
@@ -42,6 +61,13 @@ class FrontAlert {
                                 },
                               ),
                               ReactiveTextField(
+                                onChanged: (_){
+                                  client.frontHeight = alert_form.control('heigth').value;
+                                  client.frontWight = alert_form.control('width').value;
+                                  client.frontKvadratura = alert_form.control('kvadratura').value;
+                                  screenForm.control('${element}Kvadratura').value =
+                                      alert_form.control('kvadratura').value;
+                                },
                                 keyboardType: TextInputType.number,
                                 cursorColor: primaryColor,
                                 decoration: CustomInputDecoration(
@@ -60,6 +86,10 @@ class FrontAlert {
                                       screenForm.control(element).value =
                                           alert_form.control('heigth').value/1000 *
                                               alert_form.control('width').value /1000- alert_form.control('kvadratura').value;
+                                      client.front = screenForm.control(element).value;
+                                      client.frontHeight = alert_form.control('heigth').value;
+                                      client.frontWight = alert_form.control('width').value;
+                                      client.frontKvadratura = alert_form.control('kvadratura').value;
                                       screenForm.markAllAsTouched();
                                       Navigator.pop(context);
                                     },

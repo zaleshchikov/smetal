@@ -25,7 +25,7 @@ class FirstDataField extends StatelessWidget {
         if (client.name != "") form.control('name').value = client.name;
         if (client.address != "") form.control('address').value = client.address;
         if (client.number != "") form.control('number').value = client.number;
-        if (client.level!= 0) form.control('floor').value = client.level;
+        if (client.level!= -1) form.control('level').value = client.level;
         if (client.elevator != "") form.control('elevator').value = client.elevator;
 
 
@@ -63,12 +63,12 @@ class FirstDataField extends StatelessWidget {
             ),
             ReactiveTextField(
               onChanged: (_){
-                client.floor = form.control('floor').value;
+                client.level = form.control('level').value;
               },
               cursorColor: theme.primaryColor,
               decoration:
                   CustomInputDecoration(hintText: "Этаж").inputDecoration(),
-              formControlName: 'floor',
+              formControlName: 'level',
               validationMessages: {'required': (error) => 'Обязательное поле'},
             ),
             ReactiveDropdownField<String>(

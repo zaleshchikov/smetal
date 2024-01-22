@@ -30,15 +30,15 @@ class _InsolationFieldState extends State<InsolationField> {
     return ReactiveFormBuilder(
       form: () => InsulationLogic.form,
       builder: (context, form, child) {
-        if (widget.client.penoplex50 != 0)
+        if (widget.client.penoplex50 != -1)
           form.control('penoplex50').value = widget.client.penoplex50;
-        if (widget.client.penoplex20 != 0)
+        if (widget.client.penoplex20 != -1)
           form.control('penoplex20').value = widget.client.penoplex20;
-        if (widget.client.insolationPPU != 0)
+        if (widget.client.insolationPPU != -1)
           form.control('insolationPPU').value = widget.client.insolationPPU;
-        if (widget.client.ecofol05 != 0)
+        if (widget.client.ecofol05 != -1)
           form.control('ecofol05').value = widget.client.ecofol05;
-        if (widget.client.sealing != 0)
+        if (widget.client.sealing != -1)
           form.control('sealing').value = widget.client.sealing;
 
         List<double> paramList = [
