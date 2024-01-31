@@ -5,7 +5,9 @@ class CheckTile extends StatelessWidget {
   Function(FormControl) f;
   String name;
   String id;
-  CheckTile(this.f, this.name, this.id);
+  bool check = true;
+  CheckTile(this.f, this.name, this.id, { this.check = true});
+  CheckTile.withCheck(this.f, this.name, this.id, this.check);
 
   @override
   Widget build(BuildContext context) {

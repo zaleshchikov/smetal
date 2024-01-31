@@ -5,6 +5,15 @@ class SecondDataLogic {
         'ceiling': FormControl<double>(
           validators: [Validators.required],
         ),
+        'preparatoryWork': FormControl<double>(
+          validators: [Validators.required],
+        ),
+        'hiddenWork': FormControl<double>(
+          validators: [Validators.required],
+        ),
+        'mortgageWork': FormControl<double>(
+          validators: [Validators.required],
+        ),
         'ceilingHeight': FormControl<double>(
           validators: [Validators.required],
         ),
@@ -59,12 +68,12 @@ class SecondDataLogic {
         'railings': FormControl<double>(
           validators: [Validators.required],
         ),
-    'railingsHeight': FormControl<double>(
-      validators: [Validators.required],
-    ),
-    'railingsWight': FormControl<double>(
-      validators: [Validators.required],
-    ),
+        'railingsHeight': FormControl<double>(
+          validators: [Validators.required],
+        ),
+        'railingsWight': FormControl<double>(
+          validators: [Validators.required],
+        ),
         'skirtingRailings': FormControl<double>(
           validators: [Validators.required],
         ),

@@ -85,8 +85,9 @@ class FrontAlert {
                                     onPressed: () async {
                                       screenForm.control(element).value =
                                           alert_form.control('heigth').value/1000 *
-                                              alert_form.control('width').value /1000- alert_form.control('kvadratura').value;
-                                      client.front = screenForm.control(element).value;
+                                              alert_form.control('width').value /1000 - alert_form.control('kvadratura').value;
+                                      client.front = alert_form.control('heigth').value/1000 *
+                                          alert_form.control('width').value /1000 - alert_form.control('kvadratura').value;;
                                       client.frontHeight = alert_form.control('heigth').value;
                                       client.frontWight = alert_form.control('width').value;
                                       client.frontKvadratura = alert_form.control('kvadratura').value;

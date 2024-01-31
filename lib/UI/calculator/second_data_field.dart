@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:reactive_forms/reactive_forms.dart';
+import 'package:smeta/UI/calculator/preparatoryWork_alert.dart';
+import 'insolation_alert.dart';
+import 'insolation_alert_logic.dart';
 import 'railings_logic.dart';
 import 'param_alert.dart';
 import 'package:smeta/decoration/input_decoration.dart';
@@ -28,6 +31,7 @@ class _SecondDataFieldState extends State<SecondDataField> {
 
   @override
   Widget build(BuildContext context) {
+    print(widget.client.front);
     var theme = Theme.of(context);
     var size = MediaQuery.of(context).size;
     var sSize = MediaQuery.of(context);
@@ -78,8 +82,28 @@ class _SecondDataFieldState extends State<SecondDataField> {
           form.control('table').value = widget.client.table;
           form.control('clothesDryerCeiling').value = widget.client.clothesDryerCeiling;
           form.control('clothesDryerWall').value = widget.client.clothesDryerWall;
+        widget.client.preparatoryWork = widget.client.leftWall +
+        widget.client.rightWall +
+        widget.client.ceiling +
+        widget.client.floor +
+        widget.client.railings +
+        widget.client.column +
+        widget.client.front;
+        form.control('preparatoryWork').value = widget.client.preparatoryWork;
+
 
         form.markAllAsTouched();
+
+        List<double> paramList = [
+          widget.client.leftWall,
+          widget.client.rightWall,
+          widget.client.ceiling,
+          widget.client.floor,
+          widget.client.railings,
+          widget.client.column,
+          widget.client.front
+        ];
+
         return Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
@@ -305,7 +329,7 @@ class _SecondDataFieldState extends State<SecondDataField> {
         'frontMaterial',
         widget.client.frontMaterial == ""
         ? 'Материал'
-            : widget.client.frontMaterial), "",
+            : widget.client.frontMaterial), widget.client.frontMaterial,
                 (_) {
               widget.client.front = form.control('front').value;
             }, (_) {
@@ -1363,6 +1387,20 @@ class _SecondDataFieldState extends State<SecondDataField> {
                             form.control('clothesDryerCeiling').value,
                         'Сушилка потолочная',
                         'clothesDryerCeiling'),
+            FieldTileWithMaterial.withOnTap(1.8, sSize, 'preparatoryWork',
+                "Подготовительные работы", theme, form, Container(), "", (_) {
+                  widget.client.preparatoryWork = form.control('preparatoryWork').value;
+                }, (_) {
+                  PreparatoryWorkAlert.ShowParamAlert(
+                      context,
+                      theme.primaryColor,
+                      form,
+                      theme.textTheme.titleLarge,
+                      InsolationAlertLogic.form,
+                      'preparatoryWork',
+                      widget.client,
+                      paramList);
+                }),
 
             ReactiveFormConsumer(
               builder: (buildContext, form, child) {

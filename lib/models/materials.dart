@@ -2,7 +2,6 @@ import 'client.dart';
 import 'clients_example.dart';
 
 class MaterialPrice {
-
   static double GetPrice(String material) {
     switch (material) {
       case "Пвх панель (Горизонтально)":
@@ -307,7 +306,7 @@ class MaterialPrice {
         return 1250;
       case 'penoplex20':
         return 1150;
-      case 'insolationPPU' :
+      case 'insolationPPU':
         return 2850;
       case 'ecofol05':
         return 650;
@@ -323,7 +322,16 @@ class MaterialPrice {
         return 1900;
       case 'priming':
         return 250;
-
+      case 'hiddenWork':
+        return 1240;
+      case 'mortgageWork':
+        return 1240;
+      case 'preparatoryWork':
+        return 1240;
+      case 'cableOutput':
+        return 2800;
+      case 'cableLaying':
+        return 1350;
     }
     return 0;
   }

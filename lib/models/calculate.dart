@@ -52,6 +52,8 @@ class Calculation {
         client.dop5 +
         client.dop6 +
         (client.clothesDryerCeiling ? 6450 : 0) +
-        (client.clothesDryerWall ? 6450 : 0));
+        (client.clothesDryerWall ? 6450 : 0))
+      + client.preparatoryWork * MaterialPrice.GetPrice('preparatoryWork')
+    ;
   }
 }

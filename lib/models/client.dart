@@ -95,9 +95,15 @@ class Client {
   bool clothesDryerWall;
   bool clothesDryerCeiling;
   int id;
+  double preparatoryWork;
+  // String penoplex20List;
+  // String penoplex50List;
+  // String ecofol05List;
+
+
+
 
   Client(
-
       this.name,
       this.address,
       this.number,
@@ -190,10 +196,8 @@ class Client {
       this.name6,
       this.clothesDryerWall,
       this.clothesDryerCeiling,
-      this.id
-      );
-
-  // The generated toJson method
+      this.id,
+      this.preparatoryWork); // The generated toJson method
   Map<String, dynamic> toJson() => _$ClientToJson(this);
 
   // The generated fromJson method

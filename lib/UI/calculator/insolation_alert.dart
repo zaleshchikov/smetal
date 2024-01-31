@@ -44,6 +44,7 @@ class InsolationAlert {
                                       if(element == 'penoplex20') client.penoplex20 = sum;
                                       if(element == 'ecofol05') client.ecofol05 = sum;
                                       if( element == 'coloring') client.coloring = sum;
+                                      if(element == 'preparatoryWork') client.preparatoryWork = sum;
                                       screenForm.control(element).value = sum;
                                       screenForm.markAllAsTouched();
                                       Navigator.pop(context);

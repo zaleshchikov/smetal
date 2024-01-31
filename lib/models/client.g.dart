@@ -99,11 +99,11 @@ Client _$ClientFromJson(Map<String, dynamic> json) => Client(
       json['name6'] as String,
       json['clothesDryerWall'] as bool,
       json['clothesDryerCeiling'] as bool,
-      json['id'] as int
+      json['id'] as int,
+      (json['preparatoryWork'] as num).toDouble(),
     );
 
 Map<String, dynamic> _$ClientToJson(Client instance) => <String, dynamic>{
-      'id': instance.id,
       'name': instance.name,
       'address': instance.address,
       'number': instance.number,
@@ -196,4 +196,6 @@ Map<String, dynamic> _$ClientToJson(Client instance) => <String, dynamic>{
       'name6': instance.name6,
       'clothesDryerWall': instance.clothesDryerWall,
       'clothesDryerCeiling': instance.clothesDryerCeiling,
+      'id': instance.id,
+      'preparatoryWork': instance.preparatoryWork,
     };

@@ -106,7 +106,7 @@ class OrderPDF {
               ])
             ]),
             pw.Table(border: pw.TableBorder.all(), children: [
-              pw.TableRow(children: [
+              if(client.ceiling != 0) pw.TableRow(children: [
                 pw.Container(width: 10, child: pw.Text('1')),
                 pw.Container(
                     width: 60, child: pw.Text('Потолок', style: style)),
@@ -137,7 +137,7 @@ class OrderPDF {
                                 client.ceiling)
                             .toStringAsFixed(2)))
               ]),
-              pw.TableRow(children: [
+              if(client.floor != 0)pw.TableRow(children: [
                 pw.Container(width: 10, child: pw.Text('2')),
                 pw.Container(
                     width: 60, child: pw.Text('Пол', style: style)),
@@ -170,7 +170,7 @@ class OrderPDF {
               ])
             ]),
             pw.Table(border: pw.TableBorder.all(), children: [
-              TableTile.tile(
+              if(client.floorRaising != 0)TableTile.tile(
                   style,
                   3,
                   'Поднятие пола',
@@ -179,7 +179,7 @@ class OrderPDF {
                   '',
                   MaterialPrice.GetPrice('floorRaising'),
                   MaterialPrice.GetPrice('floorRaising') * client.floorRaising),
-              TableTile.tile(
+              if(client.floorOverlap != 0)TableTile.tile(
                   style,
                   4,
                   'Покрытие полв',
@@ -190,7 +190,7 @@ class OrderPDF {
                   MaterialPrice.GetPrice(client.floorOverlapMaterial) *
                       client.floorOverlap)]),
             pw.Table(border: pw.TableBorder.all(), children: [
-              pw.TableRow(children: [
+              if(client.front != 0)pw.TableRow(children: [
                 pw.Container(width: 10, child: pw.Text('5')),
                 pw.Container(
                     width: 60, child: pw.Text('Фасад', style: style)),
@@ -227,7 +227,7 @@ class OrderPDF {
               ])]),
             pw.Table(border: pw.TableBorder.all(), children: [
 
-              TableTile.tile(
+              if(client.slopes != 0)TableTile.tile(
                   style,
                   6,
                   'Откосы',
@@ -237,7 +237,7 @@ class OrderPDF {
                   MaterialPrice.GetPrice(client.slopesMaterial),
                   MaterialPrice.GetPrice(client.slopesMaterial) *
                       client.slopes),
-              TableTile.tile(
+              if(client.f_profile != 0)TableTile.tile(
                   style,
                   7,
                   'Запил под 45/ Уголок/ F-профиль',
@@ -247,7 +247,7 @@ class OrderPDF {
                   MaterialPrice.GetPrice(client.f_profileMaterial),
                   MaterialPrice.GetPrice(client.f_profileMaterial) *
                       client.f_profile),
-              TableTile.tile(
+              if(client.startProfile != 0)TableTile.tile(
                   style,
                   8,
                   'Стартовый профиль на откосы',
@@ -257,7 +257,7 @@ class OrderPDF {
                   MaterialPrice.GetPrice('floorRaising'),
                   MaterialPrice.GetPrice('floorRaising') * client.startProfile)]),
             pw.Table(border: pw.TableBorder.all(), children: [
-              pw.TableRow(children: [
+              if(client.leftWall != 0)pw.TableRow(children: [
                 pw.Container(width: 10, child: pw.Text('9')),
                 pw.Container(
                     width: 60, child: pw.Text('Левая стена', style: style)),
@@ -288,7 +288,7 @@ class OrderPDF {
                             client.leftWall)
                             .toStringAsFixed(2)))
               ]),
-              pw.TableRow(children: [
+              if(client.rightWall != 0)pw.TableRow(children: [
                 pw.Container(width: 10, child: pw.Text('10')),
                 pw.Container(
                     width: 60, child: pw.Text('Правая стена', style: style)),
@@ -321,7 +321,7 @@ class OrderPDF {
               ]),
             ]),
             pw.Table(border: pw.TableBorder.all(), children: [
-              TableTile.tile(
+              if(client.column != 0)TableTile.tile(
                   style,
                   11,
                   'Колонны',
@@ -332,7 +332,7 @@ class OrderPDF {
                   MaterialPrice.GetPrice(client.columnMaterial) *
                       client.column)]),
             pw.Table(border: pw.TableBorder.all(), children: [
-              pw.TableRow(children: [
+              if(client.railings != 0)pw.TableRow(children: [
                 pw.Container(width: 10, child: pw.Text('12')),
                 pw.Container(
                     width: 60, child: pw.Text('Перила(парапет)', style: style)),
@@ -365,7 +365,7 @@ class OrderPDF {
               ]),
             ]),
             pw.Table(border: pw.TableBorder.all(), children: [
-              TableTile.tile(
+              if(client.skirtingRailings != 0) TableTile.tile(
                   style,
                   13,
                   'Обводы перил/углов',
@@ -375,7 +375,7 @@ class OrderPDF {
                   MaterialPrice.GetPrice('skirtingRailings'),
                   MaterialPrice.GetPrice('skirtingRailings') *
                       client.skirtingRailings),
-              TableTile.tile(
+              if(client.baseboard != 0)TableTile.tile(
                   style,
                   14,
                   'Плинтус',
@@ -385,7 +385,7 @@ class OrderPDF {
                   MaterialPrice.GetPrice(client.baseboardMaterial),
                   MaterialPrice.GetPrice(client.baseboardMaterial) *
                       client.baseboard),
-              TableTile.tile(
+              if(client.angles != 0)TableTile.tile(
                   style,
                   15,
                   'Уголки',
@@ -394,7 +394,7 @@ class OrderPDF {
                   '',
                   MaterialPrice.GetPrice('angles'),
                   MaterialPrice.GetPrice('angles') * client.angles),
-              TableTile.tile(
+              if(client.windowsill != 0) TableTile.tile(
                   style,
                   16,
                   'Подоконник',
@@ -404,7 +404,7 @@ class OrderPDF {
                   MaterialPrice.GetPrice(client.windowsillMaterial),
                   MaterialPrice.GetPrice(client.windowsillMaterial) *
                       client.windowsill),
-              TableTile.tile(
+              if(client.windowsillWithGlass != 0)TableTile.tile(
                   style,
                   17,
                   'Подоконник под остекление',
@@ -414,7 +414,7 @@ class OrderPDF {
                   MaterialPrice.GetPrice(client.windowsillWithGlassMaterial),
                   MaterialPrice.GetPrice(client.windowsillWithGlassMaterial) *
                       client.windowsillWithGlass),
-              TableTile.tile(
+              if(client.sillSheathing != 0)TableTile.tile(
                   style,
                   18,
                   'Обшивка порога',
@@ -424,7 +424,7 @@ class OrderPDF {
                   MaterialPrice.GetPrice(client.sillSheathingMaterial),
                   MaterialPrice.GetPrice(client.sillSheathingMaterial) *
                       client.sillSheathing),
-              TableTile.tile(
+              if(client.table != 0)TableTile.tile(
                   style,
                   19,
                   'Столешница',
@@ -433,7 +433,7 @@ class OrderPDF {
                   client.ceilingMaterial,
                   MaterialPrice.GetPrice(client.tableMaterial),
                   MaterialPrice.GetPrice(client.tableMaterial) * client.table),
-              TableTile.tile(
+              if(client.clothesDryerWall)TableTile.tile(
                   style,
                   20,
                   'Сушилка настенная',
@@ -443,7 +443,7 @@ class OrderPDF {
                   MaterialPrice.GetPrice('clothesDryer'),
                   MaterialPrice.GetPrice('clothesDryer') *
                       (client.clothesDryerWall ? 1 : 0)),
-              TableTile.tile(
+              if(client.clothesDryerCeiling)TableTile.tile(
                   style,
                   21,
                   'Сушилка потолочная',
@@ -453,12 +453,13 @@ class OrderPDF {
                   MaterialPrice.GetPrice('clothesDryer'),
                   MaterialPrice.GetPrice('clothesDryer') *
                       (client.clothesDryerCeiling ? 1 : 0)),
+
             ]),
             pw.Center(
                 child: pw.Text('Утепление',
                     style: pw.TextStyle(font: style.font, fontSize: 20))),
             pw.Table(border: pw.TableBorder.all(), children: [
-              TableTile.tile(
+              if(client.penoplex50 != 0)TableTile.tile(
                   style,
                   22,
                   'Понеплекс 50',
@@ -467,7 +468,7 @@ class OrderPDF {
                   '',
                   MaterialPrice.GetPrice('penoplex50'),
                   MaterialPrice.GetPrice('penoplex50') * client.penoplex50),
-              TableTile.tile(
+              if(client.penoplex20 != 0)TableTile.tile(
                   style,
                   23,
                   'Пеноплекс 20',
@@ -476,7 +477,7 @@ class OrderPDF {
                   '',
                   MaterialPrice.GetPrice('penoplex20'),
                   MaterialPrice.GetPrice('penoplex20') * client.penoplex20),
-              TableTile.tile(
+              if(client.insolationPPU != 0)TableTile.tile(
                   style,
                   24,
                   'Утепление ППУ',
@@ -486,7 +487,7 @@ class OrderPDF {
                   MaterialPrice.GetPrice('insolationPPU'),
                   MaterialPrice.GetPrice('insolationPPU') *
                       client.insolationPPU),
-              TableTile.tile(
+              if(client.ecofol05 != 0)TableTile.tile(
                   style,
                   25,
                   'Экофол 0.5',
@@ -495,7 +496,7 @@ class OrderPDF {
                   '',
                   MaterialPrice.GetPrice('ecofol05'),
                   MaterialPrice.GetPrice('ecofol05') * client.ecofol05),
-              TableTile.tile(
+              if(client.sealing != 0)TableTile.tile(
                   style,
                   26,
                   'Столешница',
@@ -509,7 +510,7 @@ class OrderPDF {
                 child: pw.Text('Покраска',
                     style: pw.TextStyle(font: style.font, fontSize: 20))),
             pw.Table(border: pw.TableBorder.all(), children: [
-              TableTile.tile(
+              if(client.cleaning != 0)TableTile.tile(
                   style,
                   27,
                   'Зачистка',
@@ -518,7 +519,7 @@ class OrderPDF {
                   '',
                   MaterialPrice.GetPrice('cleaning'),
                   MaterialPrice.GetPrice('cleaning') * client.cleaning),
-              TableTile.tile(
+              if(client.priming != 0)TableTile.tile(
                   style,
                   28,
                   'Грунтовка',
@@ -527,7 +528,7 @@ class OrderPDF {
                   '',
                   MaterialPrice.GetPrice('priming'),
                   MaterialPrice.GetPrice('priming') * client.priming),
-              TableTile.tile(
+              if(client.coloring != 0)TableTile.tile(
                   style,
                   29,
                   'Покраска 3 слоя',
@@ -537,7 +538,7 @@ class OrderPDF {
                   MaterialPrice.GetPrice(client.coloringMaterial),
                   MaterialPrice.GetPrice(client.coloringMaterial) *
                       client.coloring),
-              TableTile.tile(
+              if(client.color != 0)TableTile.tile(
                   style,
                   30,
                   'Краска',
@@ -551,7 +552,7 @@ class OrderPDF {
                 child: pw.Text('Электрика',
                     style: pw.TextStyle(font: style.font, fontSize: 20))),
             pw.Table(border: pw.TableBorder.all(), children: [
-              TableTile.tile(
+              if(client.cableOutput)TableTile.tile(
                   style,
                   31,
                   'Вывод кабеля на балкон(подключение)',
@@ -561,7 +562,7 @@ class OrderPDF {
                   MaterialPrice.GetPrice('cableOutput'),
                   MaterialPrice.GetPrice('cableOutput') *
                       (client.cableOutput ? 1 : 0)),
-              TableTile.tile(
+              if(client.distributionBox != 0)TableTile.tile(
                   style,
                   32,
                   'Распределительная коробка',
@@ -571,7 +572,7 @@ class OrderPDF {
                   MaterialPrice.GetPrice('distributionBox'),
                   MaterialPrice.GetPrice('distributionBox') *
                       client.distributionBox),
-              TableTile.tile(
+              if(client.connectingPoints != 0)TableTile.tile(
                   style,
                   33,
                   'Подключение точек',
@@ -581,7 +582,7 @@ class OrderPDF {
                   MaterialPrice.GetPrice('connectingPoints'),
                   MaterialPrice.GetPrice('connectingPoints') *
                       client.connectingPoints),
-              TableTile.tile(
+              if(client.cableLaying)TableTile.tile(
                   style,
                   34,
                   'Укладка кабеля в гофру',
@@ -591,7 +592,7 @@ class OrderPDF {
                   MaterialPrice.GetPrice('cableLaying'),
                   MaterialPrice.GetPrice('cableLaying') *
                       (client.cableLaying ? 1 : 0)),
-              TableTile.tile(
+              if(client.warmFloorConecting != 0)TableTile.tile(
                   style,
                   35,
                   'Подключение теплого пола',
@@ -601,7 +602,7 @@ class OrderPDF {
                   MaterialPrice.GetPrice('warmFloorConecting'),
                   MaterialPrice.GetPrice('warmFloorConecting') *
                       client.warmFloorConecting),
-              TableTile.tile(
+              if(client.warmFloor != 0)TableTile.tile(
                   style,
                   36,
                   'Теплый пол',
@@ -611,7 +612,7 @@ class OrderPDF {
                   MaterialPrice.GetPrice(client.warmFloorMaterial),
                   MaterialPrice.GetPrice(client.warmFloorMaterial) *
                       client.warmFloor),
-              TableTile.tile(
+              if(client.warmFloorController != 0)TableTile.tile(
                   style,
                   37,
                   'Терморегулятор для теплого пола',
@@ -621,6 +622,16 @@ class OrderPDF {
                   MaterialPrice.GetPrice(client.warmFloorControllerMaterial),
                   MaterialPrice.GetPrice(client.warmFloorControllerMaterial) *
                       client.warmFloorController),
+              if(client.preparatoryWork != 0)TableTile.tile(
+                  style,
+                  38,
+                  'Подготовительные работы',
+                  client.preparatoryWork,
+                  'м2',
+                  '',
+                  MaterialPrice.GetPrice('preparatoryWork'),
+                  MaterialPrice.GetPrice('preparatoryWork') *
+                      (client.preparatoryWork)),
             ]),
             pw.Container(height: dopListWidget.isNotEmpty ? 80 : 0),
             dopListWidget.isNotEmpty

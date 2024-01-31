@@ -134,6 +134,18 @@ class _CalculatorMainScreenState extends State<CalculatorMainScreen> {
                                           Uri.parse(
                                               'http://smeta.pythonanywhere.com/clients/add'),
                                           body: json.encode(js));
+
+                                      final response_to_id = await http.get(
+                                          headers: {
+                                            'Accept': 'application/json',
+                                            "Content-Type": "application/json"
+                                          },
+                                          Uri.parse(
+                                              'http://smeta.pythonanywhere.com/'));
+
+                                      var jsDecode = json.decode(response_to_id.body);
+                                      jsDecode = jsDecode.where((e) => e['name'] == widget.client.name);
+                                      widget.client.id = jsDecode.toList()[0]['id'];
                                       return;
                                     } else{
                                       final prefs = await SharedPreferences

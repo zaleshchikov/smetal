@@ -49,7 +49,7 @@ class CustomDrawer extends StatelessWidget {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => CalculatorMainScreen("Калькулятор", Client("", "", "", 0, "", 0,  0,0, 0, 0,0,0, 0, 0, 0, 0, 0, 0, 0, 0, 0,  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", "",  "",  "",  "",  "",  "",  "",  "",  "",  "",  "",  "",  "",  "",  "",  "",  "",  "",'',  false, 0, 0, false, 0, 0,'', 0,'', 0, 0, 0, 0, 0, 0, 0, 0, '', 0,'',0,0,0,0,0,0,'','','','','','', false, false, 0))));
+                      builder: (context) => CalculatorMainScreen("Калькулятор", Client("", "", "", 0, "", 0,  0,0, 0, 0,0,0, 0, 0, 0, 0, 0, 0, 0, 0, 0,  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", "",  "",  "",  "",  "",  "",  "",  "",  "",  "",  "",  "",  "",  "",  "",  "",  "",  "",'',  false, 0, 0, false, 0, 0,'', 0,'', 0, 0, 0, 0, 0, 0, 0, 0, '', 0,'',0,0,0,0,0,0,'','','','','','', false, false, 0, 0))));
             },
           ),
           Container(height: MediaQuery.of(context).size.height/2,),
